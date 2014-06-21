@@ -72,6 +72,12 @@ function! bufferline#get_echo_string()
   let g:bufferline_status_info.count = len(names)
   let g:bufferline_status_info.before = strpart(line, 0, index)
   let g:bufferline_status_info.after = strpart(line, index + len(g:bufferline_status_info.current))
+
+  " If current buffer is not the first, add extra spacing.
+  if g:bufferline_status_info.before != ''
+      let g:bufferline_status_info.before = ' ' . g:bufferline_status_info.before
+  endif
+
   return line
 endfunction
 
